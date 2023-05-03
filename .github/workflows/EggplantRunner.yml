@@ -1,0 +1,24 @@
+name: Eggplant Runner Bulid
+
+on:
+  pull_request:
+    branches: 
+    - main
+  push:
+     branches: 
+     - main
+jobs:
+  Run-Test-Configuration:
+   runs-on: self-hosted
+   name: Run Test Configuration
+   steps:
+   - run: echo "Trigger event.. ${{ github.event_name}}. Runner OS.. ${{ runner.OS }}" 
+   - name: Eggplant Runner
+     uses: keysight-eggplant/eggplant-github-action@v1.0.5
+     with: 
+      dryRun: false
+      serverURL: "http://localhost:8000/"
+      testConfigID: "2fa6e754-a238-4654-9ba7-a354d0dc973e"
+      clientID: "client:dai:api:integration:5ab8e72c-3352-477a-99e7-f5c1a67a8df5"
+      clientSecret: "4Egtjrvhk0sy7Y8voDZ3gEhXCcCoxvQq"
+  
